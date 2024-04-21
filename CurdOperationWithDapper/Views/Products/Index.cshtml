@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CrudOperationWithDapper.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        background-image: url('images/blue-wall-background.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    /* Add border to table */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    /* Add border to table headers */
+    th {
+        border: 2px solid #000;
+        text-align: left;
+        padding: 8px;
+    }
+    /* Add border to table cells */
+    td {
+        border: 1px solid #000;
+        text-align: left;
+        padding: 8px;
+    }
+    /* Style for buttons */
+    .btn {
+        margin-right: 5px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                <h3 class="text-capitalize">List of products</h3>
+            </div>
+            <p>
+                <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa-solid fa-plus"></i> Add New Product</a>
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Action(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                                <td>
+                                    <div class="button-group">
+                                        <a href="@Url.Action("Details", "Products", new { id = item.ProductId })" class="btn btn-info"><i class="fa-solid fa-eye"></i> Details</a>
+                                        <a href="@Url.Action("Edit", "Products", new { id = item.ProductId })" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        <a href="@Url.Action("Delete", "Products", new { id = item.ProductId })" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model CrudOperationWithDapper.Models.ProductModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: linear-gradient(to right top, #670d40, #561444, #431845, #311a43, #1f1a3d, #1d294e, #17385e, #0c486c, #007196, #009ebb, #27ccda, #5ffbf1);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            margin-top: 50px;
+        }
+
+        .details-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+            .details-card dt {
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card details-card">
+                    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+                    <dl class="row">
+                        <dt class="col-sm-3">Product ID:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductId)</dd>
+                        <dt class="col-sm-3">Product Name:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductName)</dd>
+                        <dt class="col-sm-3">Price:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Price)</dd>
+                    </dl>
+                    <div class="text-center">
+                        <a href="@Url.Action("Edit", new { id = Model.ProductId })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
